@@ -1,0 +1,14 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+@media (min-width: 350px) and (max-width: 1000px) and (orientation: portrait) {
+  select {
+    font-size: calc(1.6rem + 8 * ((100vw - 350px) / 650));
+  }
+}
