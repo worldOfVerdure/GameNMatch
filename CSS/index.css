@@ -50,6 +50,11 @@ main {
 }
 
 @media (min-width: 35rem) and (max-width: 100rem) and (orientation: portrait) {
+  header {
+    flex-direction: column;
+    margin: 0;
+  }
+
   select {
     font-size: calc(1.6rem + 8 * ((100vw - 35rem) / 650)); /*range: 16-24*/
   }
