@@ -6,12 +6,26 @@ body {
   font-size: 1.6rem;
   margin: 0;
   background-color: #f0e9e9;
+  box-sizing: border-box;
+}
+
+header {
+  margin-left: 1%;
+  max-height: 10%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+header > div {
+  font-size: 2.3rem;
 }
 
 select {
   font-size: 2.75rem;
   padding: .45rem;
-  margin: .5% 0 0 .5%;
+  margin-right: 30%;
 }
 
 #optionHeader {
@@ -27,6 +41,14 @@ optgroup {
   font-weight: bold;
 }
 
+main {
+  /* display: grid; */
+  font-size: 3rem;
+  min-width: 100px;
+  min-height: 100px;
+  border: 3px solid #000;
+}
+
 @media (min-width: 35rem) and (max-width: 100rem) and (orientation: portrait) {
   select {
     font-size: calc(1.6rem + 8 * ((100vw - 35rem) / 650)); /*range: 16-24*/
@@ -40,7 +62,7 @@ optgroup {
     font-size: calc(1.4rem + 8 * ((100vw - 35rem) / 650)); /*range: 14-22*/;
   }
 
-  option {
+  option, header > div {
     font-size: calc(1.3rem + 8 * ((100vw - 35rem) / 650)); /*range: 13-21*/;
   }
 }
