@@ -10,22 +10,13 @@ body {
 }
 
 header {
-  margin-left: 1%;
   max-height: 10%;
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-}
-
-header > div {
-  font-size: 2.3rem;
 }
 
 select {
   font-size: 2.75rem;
   padding: .45rem;
-  margin-right: 30%;
+  margin: .2% 0 0 1%;
 }
 
 #optionHeader {
@@ -50,11 +41,6 @@ main {
 }
 
 @media (min-width: 35rem) and (max-width: 100rem) and (orientation: portrait) {
-  header {
-    flex-direction: column;
-    margin: 0;
-  }
-
   select {
     font-size: calc(1.6rem + 8 * ((100vw - 35rem) / 650)); /*range: 16-24*/
   }
