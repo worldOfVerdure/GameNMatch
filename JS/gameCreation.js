@@ -16,14 +16,19 @@ export function setGame(event) {
     numOfTiles = undefined;
 
   if (numOfTiles !== undefined) {
-    const optgroupSelection = event.target.parentElement.tagName;
+    //const optgroupSelection = event.target.selectedOptions[0].parentNode.label;
+    const optgroupSelection = event.target.selectedOptions[0].closest("optgroup").label;
     alert(optgroupSelection);
   }
 }
+/*
+> Is the selectEl assigned the select element due to bubbling? The target was an option element, and the select element had the eventListener.
 
-// export function setGame(event) {
-//   const optgroupSelection = event.target.parentElement; // get the optgroup element
-//   alert(optgroupSelection.label); // show the optgroup label
-//   // do something with the optgroup element, such as changing its style
-//   optgroupSelection.style.backgroundColor = "yellow";
-// }
+No, the target is the `select` element. It is the `select` element that changed, not the `option` element. 
+
+> Specifically, the ".label". Are we accessing the attribute with the dot operator because it is a property of the optgroup element object? We don't need the getAttribute method? 
+
+You can access label using both options.
+*/
+
+// ToQuery: Is it that I changed the select element by clicking the option element?
