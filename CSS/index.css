@@ -15,6 +15,7 @@ header {
 
 select {
   font-size: 2.75rem;
+  font-family: "Playfair Display", serif;
   padding: .45rem;
   margin: .2% 0 0 1%;
 }
@@ -53,9 +54,13 @@ div > p {
 div.statsDisplay {
   flex: 1 1 20%;
   width: 45%;
-  height: 118.5%;
+  font-family: "Playfair Display", serif;
   background-color: #fff;
   text-align: center;
+}
+
+div.timer {
+  font-family: "Protest Guerrilla", sans-serif;
 }
 
 main {
@@ -80,5 +85,9 @@ main {
 
   option, header > div {
     font-size: calc(1.3rem + 8 * ((100vw - 35rem) / 650)); /*range: 13-21*/;
+  }
+
+  div.statsDisplay {
+    width: 80%;
   }
 }
