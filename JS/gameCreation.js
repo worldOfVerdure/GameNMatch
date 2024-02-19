@@ -22,15 +22,15 @@ export function setGame(event) {
     // code to select the card items as well, first need to be introduced into the html document.
     switch (optgroupSelection) {
       case "Fauna":
-        theBody.style.background = "conic-gradient(at 50% 0, #43766C, #B19470, #76453B)";
+        theBody.style.background = "conic-gradient(at 50% -3%, #382417 90deg, #2d634c, #B19470 270deg)";
         pElements.forEach(e => {e.style.color = "#F8FAE5";});
         break;
       case "Flora":
-        theBody.style.background = "conic-gradient(at 50% 0, #7c305c 120deg, #56bd44, #6e36a3 240deg)";
+        theBody.style.background = "conic-gradient(at 50% -3%, #2da5ad 120deg, #169761, #463594 240deg)";
         pElements.forEach(e => {e.style.color = "#F8FF95"});
         break;
       case "Fungi":
-        theBody.style.background = "conic-gradient(at 50% 0, #35858B, #072227, #AEFEFF";
+        theBody.style.background = "conic-gradient(at 50% -1%, #35858B, #072227, #AEFEFF";
         pElements.forEach(e => {e.style.color = "#78e6e2"});
         break;
       default:
