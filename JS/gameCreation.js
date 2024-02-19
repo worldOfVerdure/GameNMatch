@@ -16,9 +16,27 @@ export function setGame(event) {
     numOfTiles = undefined;
 
   if (numOfTiles !== undefined) {
-    //const optgroupSelection = event.target.selectedOptions[0].parentNode.label;
     const optgroupSelection = event.target.selectedOptions[0].closest("optgroup").label;
-    alert(optgroupSelection);
+    const theBody = document.querySelector("body");
+    const pElements = document.querySelectorAll("p");
+    // code to select the card items as well, first need to be introduced into the html document.
+    switch (optgroupSelection) {
+      case "Fauna":
+        theBody.style.background = "conic-gradient(at 50% 0, #43766C, #B19470, #76453B)";
+        pElements.forEach(e => {e.style.color = "#F8FAE5";});
+        break;
+      case "Flora":
+        theBody.style.background = "conic-gradient(at 50% 0, #FFA1F5, #BC7AF9, #A6FF96";
+        pElements.forEach(e => {e.style.color = "#F8FF95"});
+        break;
+      case "Fungi":
+        theBody.style.background = "conic-gradient(at 50% 0, #35858B, #072227, #AEFEFF";
+        pElements.forEach(e => {e.style.color = "#4FBDBA"});
+        break;
+      default:
+        console.log("The appropriate optgroup was not chosen.");
+        alert("Try refreshing the webpage.");
+    }
   }
 }
 /*
