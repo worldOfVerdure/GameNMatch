@@ -26,12 +26,12 @@ export function setGame(event) {
         pElements.forEach(e => {e.style.color = "#F8FAE5";});
         break;
       case "Flora":
-        theBody.style.background = "conic-gradient(at 50% 0, #FFA1F5, #BC7AF9, #A6FF96";
+        theBody.style.background = "conic-gradient(at 50% 0, #7c305c 120deg, #56bd44, #6e36a3 240deg)";
         pElements.forEach(e => {e.style.color = "#F8FF95"});
         break;
       case "Fungi":
         theBody.style.background = "conic-gradient(at 50% 0, #35858B, #072227, #AEFEFF";
-        pElements.forEach(e => {e.style.color = "#4FBDBA"});
+        pElements.forEach(e => {e.style.color = "#78e6e2"});
         break;
       default:
         console.log("The appropriate optgroup was not chosen.");
