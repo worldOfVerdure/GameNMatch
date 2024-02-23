@@ -38,7 +38,7 @@ optgroup {
 div[id="statsContainer"] {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: stretch;
 }
 
 div.infoBlock, div.timerBlock {
@@ -59,21 +59,29 @@ div.timerBlock {
 div > p {
   width: fit-content;
   font-size: 2.7rem;
+  margin-bottom: 1rem;
 }
 
 div.statsDisplay { /* Change the flex shrinkage on the two */
   flex: 1 1 20%;
   font-size: 2.55rem;
   width: fit-content;
-  min-height: 100%;
   padding: 0 .3rem;
   font-family: "Playfair Display", serif;
   background-color: #fff;
   text-align: center;
+  
 }
 
 div.timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-family: "Protest Guerrilla", sans-serif;
+}
+
+#timerText {
+  margin: 0;
 }
 
 main {
