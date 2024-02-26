@@ -1,4 +1,4 @@
-import {timerFunction} from "./displayStats";
+// import {timerFunction} from "./displayStats";
 
 export function setGame(event) {
   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -41,7 +41,7 @@ export function setGame(event) {
     }
   }
 
-  const minutes
+  // const minutes
 }
 /*
 > Is the selectEl assigned the select element due to bubbling? The target was an option element, and the select element had the eventListener.

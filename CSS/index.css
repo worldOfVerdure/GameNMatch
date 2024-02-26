@@ -18,7 +18,7 @@ select {
   font-size: 2.75rem;
   font-family: "Playfair Display", serif;
   padding: .45rem;
-  margin: .2% 0 0 1%;
+  margin: 1% 0 1.5rem 1%;
 }
 
 #optionHeader {
@@ -79,7 +79,7 @@ div.statsDisplay {
   font-size: 3.5rem;
 }
 
-button {
+button[id="resetBtn"] {
   display: flex;
   justify-content: center;
   align-items: center;
