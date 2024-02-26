@@ -1,7 +1,11 @@
 import {setGame} from "./gameCreation.js";
 
-let selectEle = document.querySelector("select");
+function main () {
+  let selectEle = document.querySelector("select");
 
-selectEle.addEventListener("change", event => {
-  setGame(event);
-});
+  selectEle.addEventListener("change", event => {
+    setGame(event);
+  });
+}
+
+main();

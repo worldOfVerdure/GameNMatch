@@ -30,7 +30,7 @@ option {
 }
 
 optgroup {
-  font-size: 2.35rem;
+  font-size: 2.30rem;
   font-weight: bold;
 }
 
@@ -38,6 +38,7 @@ div[id="statsContainer"] {
   display: flex;
   justify-content: space-evenly;
   align-items: stretch;
+  margin: 0 .7rem;
 }
 
 div.infoBlock, div.timerBlock {
@@ -52,35 +53,41 @@ div.infoBlock {
 }
 
 div.timerBlock {
-  flex: 1 1 20%;
+  flex: 1 1 15%;
 }
 
 div > p {
   width: fit-content;
-  font-size: 2.7rem;
-  margin-bottom: 1rem;
+  font-size: 3.3rem;
+  margin: 0 0 1rem 0;
 }
 
-div.statsDisplay { /* Change the flex shrinkage on the two */
+div.statsDisplay, button {
+  font-size: 3.2rem;
+}
+
+div.statsDisplay {
   flex: 1 1 20%;
-  font-size: 2.55rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: fit-content;
   padding: 0 .3rem;
-  font-family: "Playfair Display", serif;
+  font-family: "Protest Guerrilla", sans-serif;
   background-color: #fff;
   text-align: center;
-  
+  font-size: 3.5rem;
 }
 
-div.timer {
+button {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  font-family: "Protest Guerrilla", sans-serif;
+  align-items: center;
+  border-radius: 1rem;
 }
 
-#timerText {
-  margin: 0;
+button:hover {
+  cursor: pointer;
 }
 
 main {
@@ -90,29 +97,29 @@ main {
   max-height: 70%;
 }
 
-@media (min-width: 35rem) and (max-width: 100rem) and (orientation: portrait) {
+@media (min-width: 30rem) and (max-width: 100rem) and (orientation: portrait) {
   select {
     max-width: 90%;
-    font-size: calc(1.6rem + 8 * ((100vw - 35rem) / 650)); /*range: 16-24*/
+    font-size: calc(1.6rem + 8 * ((100vw - 30rem) / 600)); /*range: 16-24*/
   }
 
   #optionHeader {
-    font-size: calc(1.5rem + 8 * ((100vw - 35rem) / 650)); /*range: 15-23*/;
+    font-size: calc(1.5rem + 8 * ((100vw - 30rem) / 600)); /*range: 15-23*/;
   }
 
   optgroup {
-    font-size: calc(1.4rem + 8 * ((100vw - 35rem) / 650)); /*range: 14-22*/;
+    font-size: calc(1.4rem + 8 * ((100vw - 30rem) / 600)); /*range: 14-22*/;
   }
 
   option, header > div {
-    font-size: calc(1.3rem + 8 * ((100vw - 35rem) / 650)); /*range: 13-21*/;
+    font-size: calc(1.3rem + 8 * ((100vw - 30rem) / 600)); /*range: 13-21*/;
   }
 
   div.statsDisplay {
-    width: 80%;
+    font-size: calc(2.5rem + 8 * ((100vw - 30rem) / 600)); /*range: 25-33*/
   }
 
   div > p {
-    font-size: calc(1.6rem + 8 * ((100vw - 35rem) / 650)); /*range: 16-24*/
+    font-size: calc(1.6rem + 16 * ((100vw - 30rem) / 600)); /*range: 16-32*/
   }
 }
