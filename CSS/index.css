@@ -74,12 +74,13 @@ div.statsDisplay {
   width: fit-content;
   padding: 0 .3rem;
   font-family: "Protest Guerrilla", sans-serif;
-  background-color: #fff;
+  /* background-color: #fff; */
   text-align: center;
   font-size: 3.5rem;
 }
 
 button[id="resetBtn"] {
+  max-width: 37.5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,6 +128,10 @@ main > div {
 
   div.statsDisplay {
     font-size: calc(2.5rem + 8 * ((100vw - 30rem) / 600)); /*range: 25-33*/
+  }
+
+  div[id="timerDisplay"] {
+    font-size: calc(1.85rem + 12.5 * ((100vw - 30rem) / 600)); /*range: 18.5-33*/
   }
 
   div > p {

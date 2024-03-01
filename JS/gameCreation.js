@@ -16,7 +16,7 @@ function runGame(mainElement, gameData, chosenOptgroup, chosenOption) {
 
   mainElement.append(gridFragment);
 
-  // set timer below
+  // set timer below zzz Next task is to get the timer to work.
   
 }
 
