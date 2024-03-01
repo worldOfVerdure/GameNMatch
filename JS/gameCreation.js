@@ -1,8 +1,7 @@
 function clearGame (mainElement, gameData) {
-  
   while(mainElement.firstChild)
     mainElement.removeChild(mainElement.firstChild);
-    debugger;
+  
   gameData.numOfTiles = 0;
   gameData.attempts = 0;
 }
