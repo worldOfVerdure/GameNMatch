@@ -1,12 +1,16 @@
-function clearGame (mainElement) {
-
+function clearGame (mainElement, gameData) {
+  
+  while(mainElement.firstChild)
+    mainElement.removeChild(mainElement.firstChild);
+    debugger;
+  gameData.numOfTiles = 0;
+  gameData.attempts = 0;
 }
 
-function runGame(mainElement, numTiles, chosenOptgroup, chosenOption) {
+function runGame(mainElement, gameData, chosenOptgroup, chosenOption) {
   // Create div elements to be appended to main
   const gridFragment = new DocumentFragment();
-  debugger;
-  for (let i = 0; i < numTiles; ++i) {
+  for (let i = 0; i < gameData.numOfTiles; ++i) {
     const gridCellDiv = document.createElement("div");
     gridFragment.append(gridCellDiv);
   }
@@ -17,29 +21,26 @@ function runGame(mainElement, numTiles, chosenOptgroup, chosenOption) {
   
 }
 
-export function setGame(event, mainElement) {
+export function setGame(event, mainElement, gameData) {
   if(mainElement.hasChildNodes())
-    clearGame(mainElement);
+    clearGame(mainElement, gameData);
 
   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
   const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-  let numOfTiles;
   
   if ((vw <= 600) || (vh <= 700))
-    numOfTiles = 16;
+    gameData.numOfTiles = 16;
 
   else if ((vw > 600 && vw <= 1000) && (vh > 700 && vh <= 1000))
-    numOfTiles = 24;
+    gameData.numOfTiles = 24;
 
   else if ((vw > 1000) || (vh > 1000))
-    numOfTiles = 36;
+    gameData.numOfTiles = 36;
 
   else
-    numOfTiles = undefined;
+    gameData.numOfTiles = undefined;
 
-  alert(`NumOfTiles is ${numOfTiles} with your clientWidth is ${vw} and your clientHeight is ${vh}.`);
-
-  if (numOfTiles !== undefined) {
+  if (gameData.numOfTiles !== undefined) {
     const optgroupSelection = event.target.selectedOptions[0].closest("optgroup").label;
     const selectOption = event.target.selectedOptions[0];
     const theBody = document.querySelector("body");
@@ -64,8 +65,8 @@ export function setGame(event, mainElement) {
 
       theBody.style.backgroundRepeat = "no-repeat";
     }
-    
-    runGame(mainElement, numOfTiles, optgroupSelection, selectOption);
+
+    runGame(mainElement, gameData, optgroupSelection, selectOption);
   }
 }
 /*
