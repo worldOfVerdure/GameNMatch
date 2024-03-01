@@ -88,13 +88,23 @@ button[id="resetBtn"] {
 
 button:hover {
   cursor: pointer;
+  background-color: #fff;
 }
 
 main {
   display: grid;
-  font-size: 3rem;
+  /* font-size: 3rem; */
   width: 95%;
-  max-height: 70%;
+  margin: 2.5rem auto 0;
+  justify-items: center;
+  align-items: center;
+  /* max-height: 70%; */
+}
+
+main > div {
+  background-color: #fff;
+  width: 100px;
+  height: 100px;
 }
 
 @media (min-width: 30rem) and (max-width: 100rem) and (orientation: portrait) {
@@ -121,5 +131,29 @@ main {
 
   div > p {
     font-size: calc(1.6rem + 16 * ((100vw - 30rem) / 600)); /*range: 16-32*/
+  }
+}
+
+@media (max-width: 60rem), (max-height: 70rem) {
+  main {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 60.01rem) and (max-width: 100rem), (min-height: 70.01rem) and (max-height: 100rem) {
+  main {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 100.01rem), (min-height: 100.01rem) {
+  main {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 1.5rem;
   }
 }
