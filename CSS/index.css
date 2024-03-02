@@ -109,6 +109,8 @@ main > div {
 }
 
 @media (min-width: 30rem) and (max-width: 100rem) and (orientation: portrait) {
+  body { background-color: yellow;}
+  
   select {
     max-width: 90%;
     font-size: calc(1.6rem + 8 * ((100vw - 30rem) / 600)); /*range: 16-24*/
