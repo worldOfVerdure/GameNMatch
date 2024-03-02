@@ -108,7 +108,7 @@ main > div {
   height: 100px;
 }
 
-@media (min-width: 30rem) and (max-width: 100rem) and (orientation: portrait) {
+@media screen and (min-width: 200px) and (max-width: 1000px) and (orientation: portrait) {
   body { background-color: yellow;}
   
   select {
@@ -141,7 +141,7 @@ main > div {
   }
 }
 
-@media (max-width: 60rem), (max-height: 70rem) {
+@media screen and (max-width: 60rem), (max-height: 70rem) {
   main {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -149,7 +149,7 @@ main > div {
   }
 }
 
-@media (min-width: 60.01rem) and (max-width: 100rem), (min-height: 70.01rem) and (max-height: 100rem) {
+@media screen and (min-width: 60.01rem) and (max-width: 100rem), (min-height: 70.01rem) and (max-height: 100rem) {
   main {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -157,7 +157,7 @@ main > div {
   }
 }
 
-@media (min-width: 100.01rem), (min-height: 100.01rem) {
+@media screen and (min-width: 100.01rem), (min-height: 100.01rem) {
   main {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
