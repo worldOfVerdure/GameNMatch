@@ -108,8 +108,6 @@ main > div {
 }
 
 @media screen and (min-width: 200px) and (max-width: 1000px) and (orientation: portrait) {
-  body { background-color: yellow;}
-  
   select {
     max-width: 90%;
     font-size: calc(1.6rem + 8 * ((100vw - 30rem) / 600)); /*range: 16-24*/
@@ -128,11 +126,11 @@ main > div {
   }
 
   div.statsDisplay {
-    font-size: calc(1.5rem + 8 * ((100vw - 30rem) / 600)); /*range: 25-33*/
+    font-size: calc(2.5rem + 8 * ((100vw - 30rem) / 600)); /*range: 25-33*/
   }
 
   div[id="timerDisplay"] {
-    font-size: .5rem; /*range: 18.5-33*/
+    font-size: calc(1.85rem + 12.5 * ((100vw - 30rem) / 600)); /*range: 18.5-33*/
   }
 
   div > p {
