@@ -127,7 +127,7 @@ main > div {
   }
 
   div.statsDisplay {
-    font-size: calc(2.5rem + 8 * ((100vw - 30rem) / 600)); /*range: 25-33*/
+    font-size: calc(1.5rem + 8 * ((100vw - 30rem) / 600)); /*range: 25-33*/
   }
 
   div[id="timerDisplay"] {
