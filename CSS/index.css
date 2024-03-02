@@ -131,7 +131,7 @@ main > div {
   }
 
   div[id="timerDisplay"] {
-    font-size: calc(1.85rem + 12.5 * ((100vw - 30rem) / 600)); /*range: 18.5-33*/
+    font-size: .5rem; /*range: 18.5-33*/
   }
 
   div > p {
