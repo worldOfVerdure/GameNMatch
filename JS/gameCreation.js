@@ -42,6 +42,7 @@ export function setGame(event, mainElement, gameData) {
   if (gameData.numOfTiles !== undefined) {
     const optgroupSelection = event.target.selectedOptions[0].closest("optgroup").label;
     const selectOption = event.target.selectedOptions[0];
+    alert(`The target is ${event.target.tagName} and the current target is ${event.currentTarget.tagName}`);
     const theBody = document.querySelector("body");
     const pElements = document.querySelectorAll("p");
     // Select colors 
