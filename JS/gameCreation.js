@@ -4,6 +4,8 @@ function clearGame (mainElement, gameData) {
   
   gameData.numOfTiles = 0;
   gameData.attempts = 0;
+  
+  // TODO: put at closeInterval() here
 }
 
 function runGame(mainElement, gameData, chosenOptgroup, chosenOption) {
@@ -17,6 +19,11 @@ function runGame(mainElement, gameData, chosenOptgroup, chosenOption) {
   mainElement.append(gridFragment);
 
   // set timer below zzz Next task is to get the timer to work.
+  const timerObj = {
+    minutes: 0,
+    
+  };
+  setInterval(timer(), 1);;
   
 }
 
