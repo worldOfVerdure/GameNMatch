@@ -96,6 +96,7 @@ main {
   display: grid;
   font-size: 3rem;
   width: 95%;
+  max-height: 75%;
   margin: 2.5rem auto 0;
   justify-items: center;
   align-items: center;
@@ -103,8 +104,8 @@ main {
 
 main > div {
   background-color: #fff;
-  width: 100px;
-  height: 100px;
+  width: 180px;
+  height: 120px;
 }
 
 @media screen and (min-width: 200px) and (max-width: 1000px) and (orientation: portrait) {

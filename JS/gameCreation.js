@@ -1,35 +1,36 @@
-function clearGame (mainElement, gameData) {
+function clearGame (mainElement, gameData, timerObj) {
   while(mainElement.firstChild)
     mainElement.removeChild(mainElement.firstChild);
   
-  gameData.numOfTiles = 0;
-  gameData.attempts = 0;
+  for (const gameProperty in gameData) {
+    gameData[gameProperty] = 0;
+  }
+
+  clearInterval(timerObj.intervalID);
+  for (const timerProperty in timerObj) {
+    timerObj[timerProperty] = 0;
+  }
   
-  // TODO: put at closeInterval() here
+  // zzz, you passed the timer object, so zero it out, TODO: put at closeInterval() here
 }
 
-function runGame(mainElement, gameData, chosenOptgroup, chosenOption) {
+function runGame(mainElement, gameData, timerObj, chosenOptgroup, chosenOption) {
   // Create div elements to be appended to main
   const gridFragment = new DocumentFragment();
   for (let i = 0; i < gameData.numOfTiles; ++i) {
     const gridCellDiv = document.createElement("div");
+    gridCellDiv.style.backgroundImage = "url(../images/cards/floraBackSmaller.png)";
     gridFragment.append(gridCellDiv);
   }
 
   mainElement.append(gridFragment);
 
-  // set timer below zzz Next task is to get the timer to work.
-  const timerObj = {
-    minutes: 0,
-    
-  };
-  setInterval(timer(), 1);;
-  
+  timerObj.intervalID = setInterval(timer(), 1);
 }
 
-export function setGame(event, mainElement, gameData) {
+export function setGame(event, mainElement, gameData, timerObj) {
   if(mainElement.hasChildNodes())
-    clearGame(mainElement, gameData);
+    clearGame(mainElement, gameData, timerObj);
 
   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
   const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
@@ -41,7 +42,7 @@ export function setGame(event, mainElement, gameData) {
     gameData.numOfTiles = 24;
 
   else if ((vw > 1000) || (vh > 1000))
-    gameData.numOfTiles = 36;
+    gameData.numOfTiles = 30;
 
   else
     gameData.numOfTiles = undefined;
@@ -49,7 +50,6 @@ export function setGame(event, mainElement, gameData) {
   if (gameData.numOfTiles !== undefined) {
     const optgroupSelection = event.target.selectedOptions[0].closest("optgroup").label;
     const selectOption = event.target.selectedOptions[0];
-    alert(`The target is ${event.target.tagName} and the current target is ${event.currentTarget.tagName}`);
     const theBody = document.querySelector("body");
     const pElements = document.querySelectorAll("p");
     // Select colors 
@@ -73,7 +73,7 @@ export function setGame(event, mainElement, gameData) {
       theBody.style.backgroundRepeat = "no-repeat";
     }
 
-    runGame(mainElement, gameData, optgroupSelection, selectOption);
+    runGame(mainElement, gameData, timerObj, optgroupSelection, selectOption);
   }
 }
 /*
