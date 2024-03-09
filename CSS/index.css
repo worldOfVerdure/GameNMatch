@@ -139,7 +139,7 @@ main > div {
   }
 }
 
-@media screen and (max-width: 600px), (max-height: 700px) {
+@media screen and (max-width: 600px) {
   main {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -147,7 +147,7 @@ main > div {
   }
 }
 
-@media screen and (min-width: 600.01px) and (max-width: 1000px), (min-height: 700.01px) and (max-height: 1000px) {
+@media screen and (min-width: 600.01px) and (max-width: 1000px) {
   main {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
