@@ -134,6 +134,14 @@ div.back {
   background: url("../images/cards/cardBack.svg") center/contain no-repeat;
 }
 
+div.backFauna {
+  background-color: ;
+}
+
+div.backFlora {
+  background-color: ;
+}
+
 div.backPolypore {
   background-color: #341738;
 }

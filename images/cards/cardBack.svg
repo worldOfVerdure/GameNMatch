@@ -9,7 +9,7 @@
     }
 
     .queryMarkSize {
-      
+      font: bold clamp(40px, calc(25px + 2vw), 50px) Protest Guerrilla;
     }
   </style>
   
