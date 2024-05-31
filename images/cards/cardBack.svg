@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en-US" lang="en-US" viewBox="0 0 60 60"
+  width="60" height="60">
+  <title>Back of Card</title>
+
+  <style>
+    .queryMarkSize {
+      font: bold clamp(40px, calc(25px + 2vw), 50px) sans-serif;
+    }
+  </style>
+
+  <!-- <defs>
+    <radialGradient id="strokeGradient"  cx="50%" cy="50%" r="50%" fr="0%" fx="50%" fy="50%">
+      <stop offset="15%" stop-color="#35858B"/>
+      <stop offset="35%" stop-color="#072227"/>
+      <stop offset="45%" stop-color="#AEFEFF"/>
+    </radialGradient>
+  </defs> -->
+  <!-- stroke="url('#strokeGradient')" -->
+
+  <circle cx="50%" cy="50%" r="45%" fill="none" stroke="#000" stroke-width="3"/>
+  <text x="50%" y="50%" class="queryMarkSize" dominant-baseline="middle" text-anchor="middle" >?</text>
+</svg>

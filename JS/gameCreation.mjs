@@ -1,35 +1,68 @@
 function clearGame (mainElement, gameData, timerObj) {
   while(mainElement.firstChild)
     mainElement.removeChild(mainElement.firstChild);
-  
-  for (const gameProperty in gameData) {
-    gameData[gameProperty] = 0;
-  }
+    gameData.numOfTiles = 0;
+    gameData.attempts = 0;
+    gameData.firstCard = null;
+    gameData.secondCard = null;
 
-  clearInterval(timerObj.intervalID);
-  for (const timerProperty in timerObj) {
-    timerObj[timerProperty] = 0;
-  }
+  // clearInterval(timerObj.intervalID);
+  // for (const timerProperty in timerObj) {
+  //   timerObj[timerProperty] = 0;
+  // }
+}
+
+function flipCard(event) {
+  event.currentTarget.classList.toggle("isRotated");
 }
 
 function runGame(mainElement, gameData, timerObj, chosenOptgroup, chosenOption) {
-  // Create div elements to be appended to main
   const gridFragment = new DocumentFragment();
+  let rowStart, columnStart, rowEnd, columnEnd, divisor;
+  
+  // if (gameData.numOfTiles <= 16)
+  //   divisor = 4;
+  // else
+  //   divisor = 6;
+// ! This be goofed. It is placing a 
   for (let i = 0; i < gameData.numOfTiles; ++i) {
-    const gridCellDiv = document.createElement("div");
-    // zzz Need to make grid relative, its children are absolute. Backcard should have a greater z
-    // index, shouldn't be problem with images not being opaque.
-    // When rotated with animation, new image on top will be the new face. You got this! Soon you
-    // will be a programmer. Neverr give up.
-    const backcardImg = document.createElement("img");
+    // rowStart = Math.floor(i/divisor)+1;
+    // columnStart = (i%divisor)+1;
+    // rowEnd = Math.floor(i/divisor)+2;
+    // columnEnd = (i%divisor)+2;
+    // Issue probably starts here
 
-    gridFragment.append(gridCellDiv);
+    const scene = document.createElement("div"); //Has Perspective
+    const card = document.createElement("div"); //Gets flipped
+    const cardBack = document.createElement("div"); //Back of card
+    const cardFront = document.createElement("div"); //Front of card
+    //TODO: Change card flip function so that the eventlistener of the event.currentTarget is
+    //TODO: temporarily disabled. The function that is called will handle the attempt. Have an
+    //TODO: if-else that checks if 0, 1, or 2 cards have been flipped.
+    
+    //*gameData object to record number of cards clicked, determines if more may be flipped
+    card.addEventListener("click", event => {
+      flipCard(event);
+    });
+
+    card.append(cardFront);
+    card.append(cardBack);
+    scene.append(card);
+    //TODO: add transform to inner card via js during click event
+    scene.classList.add("scene");
+    card.classList.add("card");
+    cardBack.classList.add("back");
+    cardFront.classList.add("front");
+    // scene.style.gridArea = `${rowStart} / ${columnStart} / ${rowEnd} / ${columnEnd}`;
+    
+    gridFragment.append(scene);
   }
   mainElement.append(gridFragment);
-  timerObj.intervalID = setInterval(timer(), 1);
+  //timerObj.intervalID = setInterval(timer(), 1);
 }
 
 export function setGame(event, mainElement, gameData, timerObj) {
+  //Everytime we enter setGame, check if we need to clear the board.
   if(mainElement.hasChildNodes())
     clearGame(mainElement, gameData, timerObj);
 
@@ -48,16 +81,17 @@ export function setGame(event, mainElement, gameData, timerObj) {
   else
     gameData.numOfTiles = undefined;
 
-  if (gameData.numOfTiles !== undefined) {
+  if (gameData.numOfTiles !== undefined) { // maybe check type
     const optgroupSelection = event.target.selectedOptions[0].closest("optgroup").label;
     const selectOption = event.target.selectedOptions[0];
     const theBody = document.querySelector("body");
     const pElements = document.querySelectorAll("p");
     // Select colors 
+    // TODO: clean this up. Add a css classList. Try to avoid adding styles
     switch (optgroupSelection) {
       case "Fauna":
         theBody.style.background = "conic-gradient(at 50% -3%, #382417 90deg, #2d634c, #B19470 270deg)";
-        pElements.forEach(e => {e.style.color = "#F8FAE5";});
+        pElements.forEach(e => {e.style.color = "#F8FAE5"});
         break;
       case "Flora":
         theBody.style.background = "conic-gradient(at 50% -3%, #2da5ad 120deg, #169761, #463594 240deg)";
@@ -71,20 +105,8 @@ export function setGame(event, mainElement, gameData, timerObj) {
         console.log("The appropriate optgroup was not chosen.");
         alert("Try refreshing the webpage.");
 
-      theBody.style.backgroundRepeat = "no-repeat";
+      theBody.style.backgroundRepeat = "no-repeat"; // same here, add this to the body element.
     }
-
     runGame(mainElement, gameData, timerObj, optgroupSelection, selectOption);
   }
 }
-/*
-> Is the selectEl assigned the select element due to bubbling? The target was an option element, and the select element had the eventListener.
-
-No, the target is the `select` element. It is the `select` element that changed, not the `option` element. 
-
-> Specifically, the ".label". Are we accessing the attribute with the dot operator because it is a property of the optgroup element object? We don't need the getAttribute method? 
-
-You can access label using both options.
-*/
-
-// ToQuery: Is it that I changed the select element by clicking the option element?

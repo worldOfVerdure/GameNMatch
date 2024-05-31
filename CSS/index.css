@@ -3,10 +3,8 @@ html {
 }
 
 body {
-  height: 100vh;
   font-size: 1.6rem;
   margin: 0;
-  background-color: #f0e9e9;
   box-sizing: border-box;
 }
 
@@ -74,7 +72,6 @@ div.statsDisplay {
   width: fit-content;
   padding: 0 .3rem;
   font-family: "Protest Guerrilla", sans-serif;
-  /* background-color: #fff; */
   text-align: center;
   font-size: 3.5rem;
 }
@@ -94,52 +91,85 @@ button:hover {
 
 main {
   display: grid;
-  font-size: 3rem;
-  width: 95%;
-  max-height: 75%;
-  margin: 2.5rem auto 0;
   justify-items: center;
   align-items: center;
+  font-size: 3rem;
+  width: 95%;
+  margin: 2.5rem auto 0;
 }
 
-main > div {
-  background-color: #fff;
+div.scene {
   width: 180px;
   height: 120px;
+  perspective: 1250px;
+}
+
+div.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .5s;
+}
+
+.isRotated {
+  transform: rotateY(-180deg);
+}
+
+div.back, div.front {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+div.back {
+  background: url("../images/cards/cardBack.svg") center/contain no-repeat;
+  border: .5rem dashed #000;
+}
+
+div.front {
+  background-color: yellowgreen;
+  transform: rotateY(180deg);
 }
 
 @media screen and (min-width: 200px) and (max-width: 1000px) and (orientation: portrait) {
   select {
     max-width: 90%;
-    font-size: calc(2.2rem + 8 * ((100vw - 30rem) / 600)); /*range: 22-30*/
+    font-size: calc(2.2rem + 8 * ((100vw - 20rem) / 800)); /*range: 22-30*/
   }
 
   #optionHeader {
-    font-size: calc(1.5rem + 8 * ((100vw - 30rem) / 600)); /*range: 15-23*/;
+    font-size: calc(1.5rem + 8 * ((100vw - 20rem) / 800)); /*range: 15-23*/;
   }
 
   optgroup {
-    font-size: calc(1.4rem + 8 * ((100vw - 30rem) / 600)); /*range: 14-22*/;
+    font-size: calc(1.4rem + 8 * ((100vw - 20rem) / 800)); /*range: 14-22*/;
   }
 
   option, header > div {
-    font-size: calc(1.3rem + 8 * ((100vw - 30rem) / 600)); /*range: 13-21*/;
+    font-size: calc(1.3rem + 8 * ((100vw - 20rem) / 800)); /*range: 13-21*/;
   }
 
   div.statsDisplay {
-    font-size: calc(2.5rem + 8 * ((100vw - 30rem) / 600)); /*range: 25-33*/
+    font-size: calc(2.5rem + 8 * ((100vw - 20rem) / 800)); /*range: 25-33*/
   }
 
   div[id="timerDisplay"] {
-    font-size: calc(2.4rem + 9 * ((100vw - 30rem) / 600)); /*range: 24-33*/
+    font-size: calc(2.4rem + 9 * ((100vw - 20rem) / 800)); /*range: 24-33*/
   }
 
   div > p {
-    font-size: calc(2rem + 12 * ((100vw - 30rem) / 600)); /*range: 20-32*/
+    font-size: calc(2rem + 12 * ((100vw - 20rem) / 800)); /*range: 20-32*/
   }
 }
 
 @media screen and (max-width: 600px) {
+  div.scene {
+    width: 76.325px;
+    height: 102.65px;
+  }
+
   main {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -147,18 +177,19 @@ main > div {
   }
 }
 
-@media screen and (min-width: 600.01px) and (max-width: 1000px) {
+@media screen and (orientation: portrait) and (min-width: 600.01px) and (max-width: 1000px) {
   main {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 1.25rem;
   }
 }
 
-@media screen and (min-width: 1000.01px), (min-height: 1000.01px) {
+@media screen and (min-width: 1000.01px) {
   main {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     gap: 1.5rem;
+    padding: 2rem;
   }
 }
