@@ -3,20 +3,10 @@
   <title>Back of Card</title>
 
   <style>
-    <!-- @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Protest+Guerrilla"); -->
     .queryMarkSize {
-      font: bold clamp(40px, calc(25px + 2vw), 50px) sans-serif;
+      font: bold clamp(40px, calc(25px + 2vw), 50px) Protest Guerrilla;
     }
   </style>
-
-  <!-- <defs>
-    <radialGradient id="strokeGradient"  cx="50%" cy="50%" r="50%" fr="0%" fx="50%" fy="50%">
-      <stop offset="15%" stop-color="#35858B"/>
-      <stop offset="35%" stop-color="#072227"/>
-      <stop offset="45%" stop-color="#AEFEFF"/>
-    </radialGradient>
-  </defs> -->
-  <!-- stroke="url('#strokeGradient')" -->
 
   <circle cx="50%" cy="50%" r="45%" fill="none" stroke="#000" stroke-width="3"/>
   <text x="50%" y="57%" class="queryMarkSize" dominant-baseline="middle" text-anchor="middle" >?</text>

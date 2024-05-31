@@ -131,7 +131,11 @@ div.back, div.front {
 }
 
 div.back {
-  background: url("../images/cards/cardBack.svg") center/contain no-repeat; 
+  background: url("../images/cards/cardBack.svg") center/contain no-repeat;
+}
+
+div.backPolypore {
+  background-color: #341738;
 }
 
 div.front {

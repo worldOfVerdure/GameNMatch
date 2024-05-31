@@ -39,7 +39,10 @@ function runGame(mainElement, gameData, timerObj, chosenOptgroup, chosenOption) 
     //TODO: add transform to inner card via js during click event
     scene.classList.add("scene");
     card.classList.add("card");
-    cardBack.classList.add("back");
+    cardBack.classList.add("back", "backPolypore");
+
+    
+
     cardFront.classList.add("front");
     // scene.style.gridArea = `${rowStart} / ${columnStart} / ${rowEnd} / ${columnEnd}`;
     
