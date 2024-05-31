@@ -6,6 +6,9 @@ body {
   font-size: 1.6rem;
   margin: 0;
   box-sizing: border-box;
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 header {
@@ -57,6 +60,7 @@ div.timerBlock {
 div > p {
   width: fit-content;
   font-size: 3.3rem;
+  font-family: system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell;
   margin: 0 0 1rem 0;
 }
 
@@ -93,15 +97,17 @@ main {
   display: grid;
   justify-items: center;
   align-items: center;
+  grid-gap: 1rem;
   font-size: 3rem;
   width: 95%;
-  margin: 2.5rem auto 0;
+  margin: 2.5rem auto 0; 
 }
 
 div.scene {
   width: 180px;
-  height: 120px;
+  height: 100px;
   perspective: 1250px;
+  border: .5rem dashed #000;
 }
 
 div.card {
@@ -110,6 +116,7 @@ div.card {
   height: 100%;
   transform-style: preserve-3d;
   transition: transform .5s;
+  
 }
 
 .isRotated {
@@ -124,8 +131,7 @@ div.back, div.front {
 }
 
 div.back {
-  background: url("../images/cards/cardBack.svg") center/contain no-repeat;
-  border: .5rem dashed #000;
+  background: url("../images/cards/cardBack.svg") center/contain no-repeat; 
 }
 
 div.front {
@@ -173,15 +179,21 @@ div.front {
   main {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 1rem;
+    grid-gap: 1rem;
   }
 }
 
-@media screen and (orientation: portrait) and (min-width: 600.01px) and (max-width: 1000px) {
+@media screen and (min-width: 600.01px) and (max-width: 1000px) {
+  div.scene {
+    width: 126.325px;
+    height: 80.65px;
+  }
+
   main {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 1.25rem;
+    grid-gap: 1.75rem;
+    padding: 1.7rem;
   }
 }
 
@@ -189,7 +201,7 @@ div.front {
   main {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(6, 1fr);
-    gap: 1.5rem;
+    grid-gap: 2.5rem;
     padding: 2rem;
   }
 }

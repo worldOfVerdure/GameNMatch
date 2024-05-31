@@ -18,20 +18,8 @@ function flipCard(event) {
 
 function runGame(mainElement, gameData, timerObj, chosenOptgroup, chosenOption) {
   const gridFragment = new DocumentFragment();
-  let rowStart, columnStart, rowEnd, columnEnd, divisor;
   
-  // if (gameData.numOfTiles <= 16)
-  //   divisor = 4;
-  // else
-  //   divisor = 6;
-// ! This be goofed. It is placing a 
   for (let i = 0; i < gameData.numOfTiles; ++i) {
-    // rowStart = Math.floor(i/divisor)+1;
-    // columnStart = (i%divisor)+1;
-    // rowEnd = Math.floor(i/divisor)+2;
-    // columnEnd = (i%divisor)+2;
-    // Issue probably starts here
-
     const scene = document.createElement("div"); //Has Perspective
     const card = document.createElement("div"); //Gets flipped
     const cardBack = document.createElement("div"); //Back of card
@@ -104,8 +92,6 @@ export function setGame(event, mainElement, gameData, timerObj) {
       default:
         console.log("The appropriate optgroup was not chosen.");
         alert("Try refreshing the webpage.");
-
-      theBody.style.backgroundRepeat = "no-repeat"; // same here, add this to the body element.
     }
     runGame(mainElement, gameData, timerObj, optgroupSelection, selectOption);
   }
