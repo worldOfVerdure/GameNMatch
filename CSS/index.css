@@ -11,6 +11,18 @@ body {
   background-repeat: no-repeat;
 }
 
+body.faunaGradient {
+  background: conic-gradient(at 50% -3%, #382417 90deg, #2d634c, #B19470 270deg);
+}
+
+body.floraGradient {
+  background: conic-gradient(at 50% -3%, #2da5ad 120deg, #169761, #463594 240deg);
+}
+
+body.fungiGradient {
+  background: conic-gradient(at 50% -1%, #35858B, #072227, #AEFEFF);
+}
+
 header {
   max-height: 10%;
 }
@@ -62,6 +74,18 @@ div > p {
   font-size: 3.3rem;
   font-family: system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell;
   margin: 0 0 1rem 0;
+}
+
+p.faunaColor {
+  color: #F8FAE5;
+}
+
+p.floraColor {
+  color: #F8FF95;
+}
+
+p.fungiColor {
+  color: #78e6e2;
 }
 
 div.statsDisplay, button {
@@ -135,15 +159,15 @@ div.back {
 }
 
 div.backFauna {
-  background-color: ;
+  background-color: #70b173;
 }
 
 div.backFlora {
-  background-color: ;
+  background-color: #bd68a6;
 }
 
-div.backPolypore {
-  background-color: #341738;
+div.backFungi {
+  background-color: #359475 ;
 }
 
 div.front {

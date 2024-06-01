@@ -1,10 +1,11 @@
 function clearGame (mainElement, gameData, timerObj) {
   while(mainElement.firstChild)
     mainElement.removeChild(mainElement.firstChild);
-    gameData.numOfTiles = 0;
-    gameData.attempts = 0;
-    gameData.firstCard = null;
-    gameData.secondCard = null;
+
+  gameData.numOfTiles = 0;
+  gameData.attempts = 0;
+  gameData.firstCard = null;
+  gameData.secondCard = null;
 
   // clearInterval(timerObj.intervalID);
   // for (const timerProperty in timerObj) {
@@ -42,12 +43,19 @@ function runGame(mainElement, gameData, timerObj, chosenOptgroup, chosenOption) 
 
     switch (chosenOptgroup) {
       case "Fauna":
-        
+        cardBack.classList.add("back", "backFauna");
+        break;
+      case "Flora":
+        cardBack.classList.add("back", "backFlora");
+        break;
+      case "Fungi":
+        cardBack.classList.add("back", "backFungi");
+        break;
+      default:
+        console.log("The appropriate optgroup was not chosen.");
+        alert("Try refreshing the webpage.");
     }
-    cardBack.classList.add("back", "backPolypore");
-
-
-
+    
     cardFront.classList.add("front");
     // scene.style.gridArea = `${rowStart} / ${columnStart} / ${rowEnd} / ${columnEnd}`;
     
@@ -83,19 +91,20 @@ export function setGame(event, mainElement, gameData, timerObj) {
     const theBody = document.querySelector("body");
     const pElements = document.querySelectorAll("p");
     // Select colors 
-    // TODO: clean this up. Add a css classList. Try to avoid adding styles
+    theBody.className = ""; //Reset classes
+    pElements.forEach(p => {p.className = ""});
     switch (optgroupSelection) {
       case "Fauna":
-        theBody.style.background = "conic-gradient(at 50% -3%, #382417 90deg, #2d634c, #B19470 270deg)";
-        pElements.forEach(e => {e.style.color = "#F8FAE5"});
+        theBody.classList.add("faunaGradient");
+        pElements.forEach(p => {p.classList.add("faunaColor")});
         break;
       case "Flora":
-        theBody.style.background = "conic-gradient(at 50% -3%, #2da5ad 120deg, #169761, #463594 240deg)";
-        pElements.forEach(e => {e.style.color = "#F8FF95"});
+        theBody.classList.add("floraGradient");
+        pElements.forEach(p => {p.classList.add("floraColor")});
         break;
       case "Fungi":
-        theBody.style.background = "conic-gradient(at 50% -1%, #35858B, #072227, #AEFEFF";
-        pElements.forEach(e => {e.style.color = "#78e6e2"});
+        theBody.classList.add("fungiGradient");
+        pElements.forEach(p => {p.classList.add("fungiColor")});
         break;
       default:
         console.log("The appropriate optgroup was not chosen.");
