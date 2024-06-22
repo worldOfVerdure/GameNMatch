@@ -57,7 +57,6 @@ function runGame(mainElement, gameData, timerObj, chosenOptgroup, chosenOption) 
     }
     
     cardFront.classList.add("front");
-    // scene.style.gridArea = `${rowStart} / ${columnStart} / ${rowEnd} / ${columnEnd}`;
     
     gridFragment.append(scene);
   }
@@ -85,7 +84,7 @@ export function setGame(event, mainElement, gameData, timerObj) {
   else
     gameData.numOfTiles = undefined;
 
-  if (gameData.numOfTiles !== undefined) { // maybe check type
+  if (gameData.numOfTiles !== undefined) {
     const optgroupSelection = event.target.selectedOptions[0].closest("optgroup").label;
     const selectOption = event.target.selectedOptions[0];
     const theBody = document.querySelector("body");
