@@ -1,3 +1,4 @@
 # Welcome to MrGame&Match
 
-ToLearn: Live versus static lists
+TODO:
+Change from 5x6 -> 6x5

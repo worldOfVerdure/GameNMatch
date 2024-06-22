@@ -1,4 +1,7 @@
-function clearGame (mainElement, gameData, timerObj) {
+import {gameData, timerData, animalImages} from "./dataObjects.mjs";
+import {randomizeImages} from "./randomImageSelector.mjs";
+
+function clearGame (mainElement) {
   while(mainElement.firstChild)
     mainElement.removeChild(mainElement.firstChild);
 
@@ -7,9 +10,9 @@ function clearGame (mainElement, gameData, timerObj) {
   gameData.firstCard = null;
   gameData.secondCard = null;
 
-  // clearInterval(timerObj.intervalID);
-  // for (const timerProperty in timerObj) {
-  //   timerObj[timerProperty] = 0;
+  // clearInterval(timerData.intervalID);
+  // for (const timerProperty in timerData) {
+  //   timerData[timerProperty] = 0;
   // }
 }
 
@@ -17,8 +20,10 @@ function flipCard(event) {
   event.currentTarget.classList.toggle("isRotated");
 }
 
-function runGame(mainElement, gameData, timerObj, chosenOptgroup, chosenOption) {
+function createCards(mainElement, chosenOptgroup, chosenOption) {
   const gridFragment = new DocumentFragment();
+  const animalImages = randomizeImages(gameData.numOfTiles, chosenOptgroup, chosenOption);
+  //TODO: Make array of needed length and add random string names
   
   for (let i = 0; i < gameData.numOfTiles; ++i) {
     const scene = document.createElement("div"); //Has Perspective
@@ -37,7 +42,6 @@ function runGame(mainElement, gameData, timerObj, chosenOptgroup, chosenOption) 
     card.append(cardFront);
     card.append(cardBack);
     scene.append(card);
-    //TODO: add transform to inner card via js during click event
     scene.classList.add("scene");
     card.classList.add("card");
 
@@ -55,19 +59,22 @@ function runGame(mainElement, gameData, timerObj, chosenOptgroup, chosenOption) 
         console.log("The appropriate optgroup was not chosen.");
         alert("Try refreshing the webpage.");
     }
+    //TODO: Add css property for a background img once it is randomly selected.
+    // const backgroundURLValue = `../images/${chosenOptgroup.toLowerCase()}/<random img name goes
+    // here>`;
     
     cardFront.classList.add("front");
     
     gridFragment.append(scene);
   }
   mainElement.append(gridFragment);
-  //timerObj.intervalID = setInterval(timer(), 1);
+  //timerData.intervalID = setInterval(timer(), 1);
 }
 
-export function setGame(event, mainElement, gameData, timerObj) {
+export function setGame(event, mainElement) {
   //Everytime we enter setGame, check if we need to clear the board.
   if(mainElement.hasChildNodes())
-    clearGame(mainElement, gameData, timerObj);
+    clearGame(mainElement, gameData, timerData);
 
   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
   const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
@@ -109,6 +116,6 @@ export function setGame(event, mainElement, gameData, timerObj) {
         console.log("The appropriate optgroup was not chosen.");
         alert("Try refreshing the webpage.");
     }
-    runGame(mainElement, gameData, timerObj, optgroupSelection, selectOption);
+    createCards(mainElement, optgroupSelection, selectOption);
   }
 }
