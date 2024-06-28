@@ -13,20 +13,20 @@ export const timerData = {
 };
 
 export const animalImages = {
-  fuana: {
+  fauna: {
     artiodactyls: ["alpaca", "amazon-river-dolphin", "bactrian-camel", "bison", "boar", "cow",
       "damascus-goat", "giraffe", "hippo", "muntjac", "narwhal", "racka", "red-deer", "saigas",
       "siberian-musk-deer", "Sperm-whale"
     ],
-    gastropod: ["abalone", "artic-moonsnail", "banana-slug", "blue-sea-dragon", "croatian-cave-snail",
-      "green-snail", "hawaiian-reticulated-cowry", "leopard-slug", "ramshorn-snail", "roman-snail",
-      "sea-angel", "sea-hare", "sheep-leaf-sea-slug", "sundial-snail", "two-spotted-keyhole-limpet",
-      "white-lined-dirona"
+    gastropods: ["abalone", "artic-moonsnail", "banana-slug", "blue-sea-dragon",
+      "croatian-cave-snail", "green-snail", "hawaiian-reticulated-cowry", "leopard-slug",
+      "ramshorn-snail", "roman-snail", "sea-angel", "sea-hare", "sheep-leaf-sea-slug",
+      "sundial-snail", "two-spotted-keyhole-limpet", "white-lined-dirona"
     ]
   },
 
   flora: {
-    asterids: ["basil", "brazil-tree-nut", "chili-peppers", "coffee", "common-daisy", "eggplant",
+    asterids: ["basil", "brazil-nut-tree", "chili-peppers", "coffee", "common-daisy", "eggplant",
       "honey-suckle", "lavendar", "lettuce", "lilac", "morning-glory", "petunia", "rhododendron",
       "sesame", "sunflower", "sweet-potato"
     ]

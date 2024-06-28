@@ -124,12 +124,13 @@ main {
   grid-gap: 1rem;
   font-size: 3rem;
   width: 95%;
-  margin: 2.5rem auto 0; 
+  height:80vh;
+  margin: 1.5rem auto; 
 }
 
 div.scene {
-  width: 180px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   perspective: 1250px;
   border: .5rem dashed #000;
 }
@@ -205,28 +206,18 @@ div.front {
   }
 }
 
-@media screen and (max-width: 600px) {
-  div.scene {
-    width: 76.325px;
-    height: 102.65px;
-  }
-
+@media screen and (orientation:portrait) and (max-width: 600px) {
   main {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 3rem;
   }
 }
 
 @media screen and (min-width: 600.01px) and (max-width: 1000px) {
-  div.scene {
-    width: 126.325px;
-    height: 80.65px;
-  }
-
   main {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     grid-gap: 1.75rem;
     padding: 1.7rem;
   }
@@ -234,8 +225,8 @@ div.front {
 
 @media screen and (min-width: 1000.01px) {
   main {
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     grid-gap: 2.5rem;
     padding: 2rem;
   }

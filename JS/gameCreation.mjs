@@ -1,5 +1,5 @@
 import {gameData, timerData, animalImages} from "./dataObjects.mjs";
-import {randomizeImages} from "./randomImageSelector.mjs";
+import {randomizeImages, addBackground} from "./imageUtilityFunctions.mjs";
 
 function clearGame (mainElement) {
   while(mainElement.firstChild)
@@ -20,10 +20,8 @@ function flipCard(event) {
   event.currentTarget.classList.toggle("isRotated");
 }
 
-function createCards(mainElement, chosenOptgroup, chosenOption) {
+function createCards(mainElement, imageNamesArray, chosenOptgroup, chosenOption) {
   const gridFragment = new DocumentFragment();
-  const animalImages = randomizeImages(gameData.numOfTiles, chosenOptgroup, chosenOption);
-  //TODO: Make array of needed length and add random string names
   
   for (let i = 0; i < gameData.numOfTiles; ++i) {
     const scene = document.createElement("div"); //Has Perspective
@@ -59,11 +57,9 @@ function createCards(mainElement, chosenOptgroup, chosenOption) {
         console.log("The appropriate optgroup was not chosen.");
         alert("Try refreshing the webpage.");
     }
-    //TODO: Add css property for a background img once it is randomly selected.
-    // const backgroundURLValue = `../images/${chosenOptgroup.toLowerCase()}/<random img name goes
-    // here>`;
     
     cardFront.classList.add("front");
+    cardFront.style.background = addBackground(imageNamesArray, i, chosenOptgroup, chosenOption);
     
     gridFragment.append(scene);
   }
@@ -82,10 +78,10 @@ export function setGame(event, mainElement) {
   if ((vw <= 600) || (vh <= 700))
     gameData.numOfTiles = 16;
 
-  else if ((vw > 600 && vw <= 1000) && (vh > 700 && vh <= 1000))
+  else if (vw > 600 && vw <= 1000)
     gameData.numOfTiles = 24;
 
-  else if ((vw > 1000) || (vh > 1000))
+  else if (vw > 1000)
     gameData.numOfTiles = 30;
 
   else
@@ -93,7 +89,7 @@ export function setGame(event, mainElement) {
 
   if (gameData.numOfTiles !== undefined) {
     const optgroupSelection = event.target.selectedOptions[0].closest("optgroup").label;
-    const selectOption = event.target.selectedOptions[0];
+    const selectOption = event.target.selectedOptions[0].innerHTML;
     const theBody = document.querySelector("body");
     const pElements = document.querySelectorAll("p");
     // Select colors 
@@ -116,6 +112,9 @@ export function setGame(event, mainElement) {
         console.log("The appropriate optgroup was not chosen.");
         alert("Try refreshing the webpage.");
     }
-    createCards(mainElement, optgroupSelection, selectOption);
+    // Generate random order for front card images
+    const imageNamesArray = randomizeImages(gameData.numOfTiles, optgroupSelection, selectOption);
+
+    createCards(mainElement, imageNamesArray, optgroupSelection, selectOption);
   }
 }
