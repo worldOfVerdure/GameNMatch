@@ -46,14 +46,14 @@ export function addImage(imageArray, index, chosenOptgroup, chosenOption) {
   const lowerCaseOptGroup = chosenOptgroup.toLowerCase();
   const lowerCaseOption = chosenOption.toLowerCase();
   
-  imgEle.src = `../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}.webp`;
+  imgEle.src = `./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}.webp`;
   imgEle.alt = `A picture of a ${imageArray[index]}`;
   imgEle.title = `${imageArray[index]}`;
   imgEle.srcset = `
-    ../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-sm.webp 76w,
-    ../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-md.webp 130w,
-    ../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-lg.webp 190w,
-    ../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-xlg.webp 250w
+    ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-sm.webp 76w,
+    ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-md.webp 130w,
+    ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-lg.webp 190w,
+    ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-xlg.webp 250w
   `;
   imgEle.sizes = `
     (max-width: 600px) 76px,
@@ -62,6 +62,6 @@ export function addImage(imageArray, index, chosenOptgroup, chosenOption) {
     250px
   `;
   imgEle.classList.add("match-image");
-  console.log(`../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-md.webp`);
+  console.log(`./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-md.webp`);
   return imgEle;
 }
