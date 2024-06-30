@@ -216,7 +216,7 @@ img.match-image {
   main {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    grid-gap: 3rem;
+    grid-gap: 2rem;
   }
 }
 

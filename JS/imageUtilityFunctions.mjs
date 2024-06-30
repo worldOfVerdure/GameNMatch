@@ -45,13 +45,10 @@ export function addImage(imageArray, index, chosenOptgroup, chosenOption) {
   const imgEle = document.createElement("img");
   const lowerCaseOptGroup = chosenOptgroup.toLowerCase();
   const lowerCaseOption = chosenOption.toLowerCase();
-  // console.log(`../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-sm`);
-  // const regex = /.webp/i;
-  // debugger;
+  
   imgEle.src = `../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}.webp`;
   imgEle.alt = `A picture of a ${imageArray[index]}`;
   imgEle.title = `${imageArray[index]}`;
-  //TODO: fix bug of cow.webp-md should be cow-md.webp
   imgEle.srcset = `
     ../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-sm.webp 76w,
     ../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-md.webp 130w,
