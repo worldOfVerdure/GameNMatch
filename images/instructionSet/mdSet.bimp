@@ -1,0 +1,35 @@
+#BIMP 2.6
+#MANIPULATION SET DEFINITION
+[RESIZE]
+new_w_pc=1
+new_h_pc=100
+new_w_px=130
+new_h_px=100
+resize_mode_width=1
+resize_mode_height=1
+stretch_mode=0
+padding_color=#000000000000
+padding_color_alpha=65535
+interpolation=2
+change_res=false
+new_res_x=72
+new_res_y=72
+
+[CHANGEFORMAT]
+format=8
+preset=0
+lossless=false
+quality=70
+alpha_quality=100
+animation=false
+anim_loop=true
+minimize_size=true
+kf_distance=50
+exif=true
+iptc=true
+xmp=true
+delay=200
+force_delay=0
+
+[RENAME]
+pattern=$$-md

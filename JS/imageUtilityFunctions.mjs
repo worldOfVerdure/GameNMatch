@@ -33,7 +33,7 @@ export function randomizeImages(numOfTiles, chosenOptgroup, chosenOption) {
     const lowerCaseOption = chosenOption.toLowerCase();
 
     doublyTruncatedImages.forEach((e, index) => {
-      imageArray[index] = `${animalImages[lowerCaseOptGroup][lowerCaseOption][e]}.webp`;
+      imageArray[index] = `${animalImages[lowerCaseOptGroup][lowerCaseOption][e]}`;
     });
   }
   populateImageNames();
@@ -41,8 +41,29 @@ export function randomizeImages(numOfTiles, chosenOptgroup, chosenOption) {
   return imageArray;
 }
 
-export function addBackground(imageArray, index, chosenOptgroup, chosenOption) {
+export function addImage(imageArray, index, chosenOptgroup, chosenOption) {
+  const imgEle = document.createElement("img");
   const lowerCaseOptGroup = chosenOptgroup.toLowerCase();
   const lowerCaseOption = chosenOption.toLowerCase();
-  return `url(\"../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}\") center/cover no-repeat`;
+  // console.log(`../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-sm`);
+  // const regex = /.webp/i;
+  // debugger;
+  imgEle.src = `../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}.webp`;
+  imgEle.alt = `A picture of a ${imageArray[index]}`;
+  imgEle.title = `${imageArray[index]}`;
+  //TODO: fix bug of cow.webp-md should be cow-md.webp
+  imgEle.srcset = `
+    ../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-sm.webp 76w,
+    ../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-md.webp 130w,
+    ../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-lg.webp 190w,
+    ../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-xlg.webp 250w
+  `;
+  imgEle.sizes = `
+    (max-width: 600px) 76px,
+    (max-width: 900px) 130px,
+    (max-width: 1200px) 190px,
+    250px
+  `;
+  imgEle.classList.add("match-image");
+  return imgEle;
 }

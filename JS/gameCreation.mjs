@@ -1,5 +1,5 @@
 import {gameData, timerData, animalImages} from "./dataObjects.mjs";
-import {randomizeImages, addBackground} from "./imageUtilityFunctions.mjs";
+import {randomizeImages, addImage} from "./imageUtilityFunctions.mjs";
 
 function clearGame (mainElement) {
   while(mainElement.firstChild)
@@ -28,6 +28,8 @@ function createCards(mainElement, imageNamesArray, chosenOptgroup, chosenOption)
     const card = document.createElement("div"); //Gets flipped
     const cardBack = document.createElement("div"); //Back of card
     const cardFront = document.createElement("div"); //Front of card
+    const frontImg = addImage(imageNamesArray, i, chosenOptgroup, chosenOption);
+    
     //TODO: Change card flip function so that the eventlistener of the event.currentTarget is
     //TODO: temporarily disabled. The function that is called will handle the attempt. Have an
     //TODO: if-else that checks if 0, 1, or 2 cards have been flipped.
@@ -37,6 +39,8 @@ function createCards(mainElement, imageNamesArray, chosenOptgroup, chosenOption)
       flipCard(event);
     });
 
+    cardFront.classList.add("front");
+    cardFront.append(frontImg);
     card.append(cardFront);
     card.append(cardBack);
     scene.append(card);
@@ -57,9 +61,6 @@ function createCards(mainElement, imageNamesArray, chosenOptgroup, chosenOption)
         console.log("The appropriate optgroup was not chosen.");
         alert("Try refreshing the webpage.");
     }
-    
-    cardFront.classList.add("front");
-    cardFront.style.background = addBackground(imageNamesArray, i, chosenOptgroup, chosenOption);
     
     gridFragment.append(scene);
   }
