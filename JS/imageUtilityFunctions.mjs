@@ -62,5 +62,6 @@ export function addImage(imageArray, index, chosenOptgroup, chosenOption) {
     250px
   `;
   imgEle.classList.add("match-image");
+  console.log(`../images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-md.webp`);
   return imgEle;
 }
