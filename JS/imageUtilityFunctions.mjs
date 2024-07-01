@@ -50,13 +50,13 @@ export function addImage(imageArray, index, chosenOptgroup, chosenOption) {
   imgEle.alt = `A picture of a ${imageArray[index]}`;
   imgEle.title = `${imageArray[index]}`;
   imgEle.srcset = `
-    ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-sm.webp 76w,
+    ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-sm.webp 100w,
     ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-md.webp 130w,
     ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-lg.webp 190w,
     ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-xlg.webp 250w
   `;
   imgEle.sizes = `
-    (max-width: 600px) 76px,
+    (max-width: 600px) 100px,
     (max-width: 900px) 130px,
     (max-width: 1200px) 190px,
     250px

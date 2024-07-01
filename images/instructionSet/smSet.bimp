@@ -3,11 +3,11 @@
 [RESIZE]
 new_w_pc=1
 new_h_pc=100
-new_w_px=76
+new_w_px=100
 new_h_px=100
 resize_mode_width=1
 resize_mode_height=1
-stretch_mode=0
+stretch_mode=1
 padding_color=#000000000000
 padding_color_alpha=65535
 interpolation=2
@@ -28,7 +28,7 @@ kf_distance=50
 exif=true
 iptc=true
 xmp=true
-delay=200
+delay=0
 force_delay=0
 
 [RENAME]
