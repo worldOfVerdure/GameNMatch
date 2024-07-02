@@ -17,6 +17,8 @@ function clearGame (mainElement) {
 }
 
 function flipCard(event) {
+  //TODO: Add further logic in this function
+  
   event.currentTarget.classList.toggle("isRotated");
 }
 

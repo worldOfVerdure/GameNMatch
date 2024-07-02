@@ -1,0 +1,47 @@
+if (gameData.firstCard === null) {
+  gameData.firstCard = imageArray[i];
+  toggle("isRotated");
+  gameData.firstTileIndex = i;
+  removeEventListener;
+}
+
+else if (gameData.secondCard === null) {
+  gameData.secondCard = imageArray[j];
+  toggle("isRotated");
+  gameData.secondTileIndex = i;
+  removeEventListener;
+  
+  if (gameData.firstCard === gameData.secondCard) {
+    ++gameData.attempts;
+    gameData.firstCard = null;
+    gameData.seondCard = null;
+    ++gameData.matches;
+    if (gameData.matches === (gameData.numOfTiles / 2))
+       ~~Game Over~~
+  }
+  else {
+    ++gameData.attempts;
+    setTimeOut(
+      PSUEDO_FIRST_CARD.toggle("isRotated");
+      PSUEDO_SECOND_CARD.toggle("isRotated");
+    )
+    PSUEDO_FIRST_CARD.addEventListerner;
+    PSUEDO_SECOND_CARD.addEventListerner;
+  }
+}
+
+//TODO: reuse callback function
+//TODO: green outline add a class in a set timeout to show they got a match
+
+How would I get the card that I need?
+Solution 1:
+I could have an entire array of the cards, and then compare the card selected to the array. So if
+the array has 30 cards total, and I select card 6, then I need to check the array starting at index
+0, one-by-one. I would eventually get to index 5, and see the card objects are equal, they match,
+they have the same memory address.
+
+Solution 2:
+I have a card that a user selected. That card has children elements. One of the children would be an
+img. <Card -> FrontCard -> Img.title> where Img.title would give the name of the animal. I could
+still remove the even listner and save the object as a property in my Game object so I can readd
+the event listner.

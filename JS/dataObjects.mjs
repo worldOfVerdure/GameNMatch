@@ -3,6 +3,11 @@
   attempts: 0,
   firstCard: null,
   secondCard: null,
+  firstIndex: undefined,
+  secondIndex: undefined,
+  matches: 0,
+
+  //TODO: make some methodfs inside this object to handle game logic
 };
 
 export const timerData = {
