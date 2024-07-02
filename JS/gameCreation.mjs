@@ -1,14 +1,11 @@
-import {gameData, timerData, animalImages} from "./dataObjects.mjs";
+import {GameData, timerData} from "./dataObjects.mjs";
 import {randomizeImages, addImage} from "./imageUtilityFunctions.mjs";
 
-function clearGame (mainElement) {
+function clearGame (mainElement, gameData) {
   while(mainElement.firstChild)
     mainElement.removeChild(mainElement.firstChild);
 
-  gameData.numOfTiles = 0;
-  gameData.attempts = 0;
-  gameData.firstCard = null;
-  gameData.secondCard = null;
+  gameData = null;
 
   // clearInterval(timerData.intervalID);
   // for (const timerProperty in timerData) {
@@ -16,13 +13,58 @@ function clearGame (mainElement) {
   // }
 }
 
-function flipCard(event) {
-  //TODO: Add further logic in this function
+function flipCard(event, gameData, eventHandler) {
+  function nonMatch() {
+    gameData.firstCard.addEventListener("click", eventHandler);
+    gameData.secondCard.addEventListener("click", eventHandler);
+    gameData.firstCard.classList.toggle("isRotated");
+    gameData.secondCard.classList.toggle("isRotated");
+    gameData.resetCards();
+  }
+
+  const selectedCard = event.currentTarget;
+  const selectedImg =  selectedCard.children[0].children[0].title;
+
+  if (gameData.firstCard === null) {
+    // Recall first card to restore event listner if needed
+    gameData.firstImg = selectedImg;
+    gameData.firstCard = selectedCard;
+    gameData.firstCard.classList.toggle("isRotated");
+    gameData.firstCard.removeEventListener("click", eventHandler);
+  }
+
+  else if (gameData.secondCard === null) {
+    ++gameData.attempts;
+    gameData.secondImg = selectedImg;
+    gameData.secondCard = selectedCard;
+    gameData.secondCard.classList.toggle("isRotated");
+    gameData.secondCard.removeEventListener("click", eventHandler);
+
+    if (gameData.firstImg === gameData.secondImg) {
+      ++gameData.matches;
+      if(gameData.matches === (gameData.numOfTiles / 2)) {
+        console.log("Game over"); // TODO: Implement function
+        return;
+      }
+
+      gameData.resetCards();
+      
+      console.log(gameData.matches);
+      // TODO: Reset if a match
+      //Implement green outline flash
+    }
   
-  event.currentTarget.classList.toggle("isRotated");
+
+    else {
+      // debugger;
+      setTimeout(() => {
+        nonMatch();
+      }, 1250);
+    }
+  }
 }
 
-function createCards(mainElement, imageNamesArray, chosenOptgroup, chosenOption) {
+function createCards(mainElement, gameData, imageNamesArray, chosenOptgroup, chosenOption) {
   const gridFragment = new DocumentFragment();
   
   for (let i = 0; i < gameData.numOfTiles; ++i) {
@@ -35,11 +77,8 @@ function createCards(mainElement, imageNamesArray, chosenOptgroup, chosenOption)
     //TODO: Change card flip function so that the eventlistener of the event.currentTarget is
     //TODO: temporarily disabled. The function that is called will handle the attempt. Have an
     //TODO: if-else that checks if 0, 1, or 2 cards have been flipped.
-    
-    //*gameData object to record number of cards clicked, determines if more may be flipped
-    card.addEventListener("click", event => {
-      flipCard(event);
-    });
+    const eventHandler = event => flipCard(event, gameData, eventHandler);
+    card.addEventListener("click", eventHandler);
 
     cardFront.classList.add("front");
     cardFront.append(frontImg);
@@ -70,15 +109,20 @@ function createCards(mainElement, imageNamesArray, chosenOptgroup, chosenOption)
   //timerData.intervalID = setInterval(timer(), 1);
 }
 
-export function setGame(event, mainElement) {
+export function setGame(event, mainElement, gameData) {
   //Everytime we enter setGame, check if we need to clear the board.
   if(mainElement.hasChildNodes())
-    clearGame(mainElement, gameData, timerData);
+    clearGame(mainElement, gameData);
+
+  gameData = new GameData();
+  // for (const property in gameData) {
+  //   console.log(`${property}: ${gameData[property]}`);
+  // }
 
   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+  // const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
   
-  if ((vw <= 600) || (vh <= 700))
+  if (vw <= 600)
     gameData.numOfTiles = 16;
 
   else if (vw > 600 && vw <= 1000)
@@ -118,6 +162,6 @@ export function setGame(event, mainElement) {
     // Generate random order for front card images
     const imageNamesArray = randomizeImages(gameData.numOfTiles, optgroupSelection, selectOption);
 
-    createCards(mainElement, imageNamesArray, optgroupSelection, selectOption);
+    createCards(mainElement, gameData, imageNamesArray, optgroupSelection, selectOption);
   }
 }

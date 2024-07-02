@@ -1,23 +1,21 @@
 if (gameData.firstCard === null) {
   gameData.firstCard = imageArray[i];
   toggle("isRotated");
-  gameData.firstTileIndex = i;
   removeEventListener;
 }
 
 else if (gameData.secondCard === null) {
   gameData.secondCard = imageArray[j];
   toggle("isRotated");
-  gameData.secondTileIndex = i;
   removeEventListener;
   
-  if (gameData.firstCard === gameData.secondCard) {
+  if (gameData.firstImg === gameData.secondImg) {
     ++gameData.attempts;
     gameData.firstCard = null;
     gameData.seondCard = null;
     ++gameData.matches;
     if (gameData.matches === (gameData.numOfTiles / 2))
-       ~~Game Over~~
+       ~~Game Over function call~~
   }
   else {
     ++gameData.attempts;
@@ -33,7 +31,7 @@ else if (gameData.secondCard === null) {
 //TODO: reuse callback function
 //TODO: green outline add a class in a set timeout to show they got a match
 
-How would I get the card that I need?
+~How would I get the card that I need?
 Solution 1:
 I could have an entire array of the cards, and then compare the card selected to the array. So if
 the array has 30 cards total, and I select card 6, then I need to check the array starting at index
@@ -45,3 +43,11 @@ I have a card that a user selected. That card has children elements. One of the 
 img. <Card -> FrontCard -> Img.title> where Img.title would give the name of the animal. I could
 still remove the even listner and save the object as a property in my Game object so I can readd
 the event listner.
+
+~How will I remove the event listenrs of all in-play tiles during the brief pause to show the player
+that their match was either successful or incorrect?
+Solution 1:
+I can get an HTMLCollection containing all my card elements and then convert that to an array. I
+can use both in tandem with the HTMLCollection used to locate the index the array to remove items as
+they are matched. This way, I can ensure with the array that any item being iterated over is
+supposed to have its event listner returned.

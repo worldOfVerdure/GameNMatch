@@ -1,13 +1,19 @@
- export const gameData = {
-  numOfTiles: 0,
-  attempts: 0,
-  firstCard: null,
-  secondCard: null,
-  firstIndex: undefined,
-  secondIndex: undefined,
-  matches: 0,
+ export class GameData {
+  constructor() {
+    this.numOfTiles = 0,
+      this.attempts = 0,
+      this.matches = 0,
+      this.firstCard = null,
+      this.secondCard = null,
+      this.firstImg = undefined,
+      this.secondImg = undefined
+  }
 
-  //TODO: make some methodfs inside this object to handle game logic
+  resetCards() {
+    this.firstCard = null;
+    this.secondCard = null;
+  }
+
 };
 
 export const timerData = {
