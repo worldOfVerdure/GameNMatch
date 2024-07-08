@@ -1,3 +1,18 @@
+:root {
+  --monospace-font-stack: 
+    font-family: system-ui, 
+    -apple-system, BlinkMacSystemFont, 
+    "Segoe UI", 
+    "Roboto", 
+    "Oxygen", 
+    "Ubuntu", 
+    "Cantarell", 
+    "Fira Sans", 
+    "Droid Sans", 
+    "Helvetica Neue", 
+    Arial, sans-serif;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -97,9 +112,9 @@ div.statsDisplay {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: fit-content;
+  width: 100%;
   padding: 0 .3rem;
-  font-family: "Protest Guerrilla", sans-serif;
+  font-family: var(--monospace-font-stack);
   text-align: center;
   font-size: 3.5rem;
 }

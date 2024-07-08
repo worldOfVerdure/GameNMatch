@@ -1,12 +1,14 @@
-import {setGame} from "./gameCreation.mjs";
+import { setGame } from "./gameCreation.mjs";
+import { TimerData } from "./dataObjects.mjs";
 
-const mainElement = document.querySelector("main");
+export const mainElement = document.querySelector("main");
 const selectEle = document.querySelector("select");
-let gameData;
-//const resetButton = document.querySelector("#resetBtn");
+export const attemptsDiv = document.getElementsByClassName("statsDisplay")[0];
+export const resetButton = document.querySelector("#resetBtn");
 
-// finish your resest button.
+export const timerDataObj = new TimerData();
+export const timerComponents = document.getElementsByClassName("timerComponent");
 
 selectEle.addEventListener("change", event => {
-  setGame(event, mainElement, gameData);
+  setGame(event, mainElement);
 });

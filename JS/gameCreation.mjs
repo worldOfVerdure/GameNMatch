@@ -1,16 +1,21 @@
-import {GameData, timerData} from "./dataObjects.mjs";
-import {randomizeImages, addImage} from "./imageUtilityFunctions.mjs";
+import { timerDataObj, timerComponents, attemptsDiv, resetButton } from "./index.mjs";
+import { GameData} from "./dataObjects.mjs";
+import { randomizeImages, addImage } from "./imageUtilityFunctions.mjs";
 
-function clearGame (mainElement, gameData) {
+function clearGame (mainElement) {
   while(mainElement.firstChild)
     mainElement.removeChild(mainElement.firstChild);
 
-  gameData = null;
+  attemptsDiv.innerText = 0;
+  //Reset timer
+  clearInterval(timerDataObj.intervalID);
+  for (const timerProperty in timerDataObj) {
+    if (typeof timerProperty === "number")
+      timerDataObj[timerProperty] = 0;
 
-  // clearInterval(timerData.intervalID);
-  // for (const timerProperty in timerData) {
-  //   timerData[timerProperty] = 0;
-  // }
+    else if (Array.isArray(timerProperty))
+      timerDataObj[timerProperty] = ["00", "00", "00"];
+  }
 }
 
 function flipCard(event, gameData, eventHandler) {
@@ -21,9 +26,9 @@ function flipCard(event, gameData, eventHandler) {
     gameData.secondCard.classList.toggle("isRotated");
     gameData.resetCards();
   }
-
+  
   const selectedCard = event.currentTarget;
-  const selectedImg =  selectedCard.children[0].children[0].title;
+  const selectedImg = selectedCard.children[0].children[0].title;
 
   if (gameData.firstCard === null) {
     // Recall first card to restore event listner if needed
@@ -34,7 +39,7 @@ function flipCard(event, gameData, eventHandler) {
   }
 
   else if (gameData.secondCard === null) {
-    ++gameData.attempts;
+    attemptsDiv.innerText = ++gameData.attempts;
     gameData.secondImg = selectedImg;
     gameData.secondCard = selectedCard;
     gameData.secondCard.classList.toggle("isRotated");
@@ -43,20 +48,18 @@ function flipCard(event, gameData, eventHandler) {
     if (gameData.firstImg === gameData.secondImg) {
       ++gameData.matches;
       if(gameData.matches === (gameData.numOfTiles / 2)) {
+        //!zzzPlace closeInterval() here
+        clearInterval(timerDataObj.intervalID);
         console.log("Game over"); // TODO: Implement function
         return;
       }
 
       gameData.resetCards();
-      
-      console.log(gameData.matches);
-      // TODO: Reset if a match
-      //Implement green outline flash
+
+      //TODO: Implement green outline flash
     }
   
-
     else {
-      // debugger;
       setTimeout(() => {
         nonMatch();
       }, 1250);
@@ -70,13 +73,10 @@ function createCards(mainElement, gameData, imageNamesArray, chosenOptgroup, cho
   for (let i = 0; i < gameData.numOfTiles; ++i) {
     const scene = document.createElement("div"); //Has Perspective
     const card = document.createElement("div"); //Gets flipped
-    const cardBack = document.createElement("div"); //Back of card
     const cardFront = document.createElement("div"); //Front of card
+    const cardBack = document.createElement("div"); //Back of card
     const frontImg = addImage(imageNamesArray, i, chosenOptgroup, chosenOption);
     
-    //TODO: Change card flip function so that the eventlistener of the event.currentTarget is
-    //TODO: temporarily disabled. The function that is called will handle the attempt. Have an
-    //TODO: if-else that checks if 0, 1, or 2 cards have been flipped.
     const eventHandler = event => flipCard(event, gameData, eventHandler);
     card.addEventListener("click", eventHandler);
 
@@ -106,19 +106,31 @@ function createCards(mainElement, gameData, imageNamesArray, chosenOptgroup, cho
     gridFragment.append(scene);
   }
   mainElement.append(gridFragment);
-  //timerData.intervalID = setInterval(timer(), 1);
+
+  let start = new Date().getTime();
+  timerDataObj.intervalID = setInterval(() => {
+    timerDataObj.calculateTime(start);
+    timerDataObj.timeArray.forEach((e, i) => {
+      timerComponents[2 - i].innerText = e; 
+    });
+  }, 25);
 }
 
-export function setGame(event, mainElement, gameData) {
+export function setGame(event, mainElement) {
   //Everytime we enter setGame, check if we need to clear the board.
   if(mainElement.hasChildNodes())
-    clearGame(mainElement, gameData);
+    clearGame(mainElement);
 
-  gameData = new GameData();
-  // for (const property in gameData) {
-  //   console.log(`${property}: ${gameData[property]}`);
-  // }
+  let gameData = new GameData();
+  //Recall event for potential reset of the game
+  gameData.selection = event;
 
+  resetButton.addEventListener("click", () => {
+    const eventSelected = gameData.selection;
+    clearGame(mainElement);
+    setGame(eventSelected, mainElement, gameData);
+  });
+  
   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
   // const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
   
@@ -159,7 +171,7 @@ export function setGame(event, mainElement, gameData) {
         console.log("The appropriate optgroup was not chosen.");
         alert("Try refreshing the webpage.");
     }
-    // Generate random order for front card images
+    // Generates random order for front card images
     const imageNamesArray = randomizeImages(gameData.numOfTiles, optgroupSelection, selectOption);
 
     createCards(mainElement, gameData, imageNamesArray, optgroupSelection, selectOption);

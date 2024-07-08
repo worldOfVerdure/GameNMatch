@@ -1,4 +1,4 @@
-import {animalImages} from "./dataObjects.mjs";
+import { animalImages } from "./dataObjects.mjs";
 
 export function randomizeImages(numOfTiles, chosenOptgroup, chosenOption) {
   const NUM_OF_IMAGES = 16;
