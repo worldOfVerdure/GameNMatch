@@ -1,5 +1,5 @@
-import { timerDataObj, timerComponents, attemptsDiv, resetButton } from "./index.mjs";
-import { GameData} from "./dataObjects.mjs";
+import { attemptsDiv, resetButton, timerDataObj, timerComponents} from "./index.mjs";
+import { GameData } from "./dataObjects.mjs";
 import { randomizeImages, addImage } from "./imageUtilityFunctions.mjs";
 
 function clearGame (mainElement) {
@@ -19,6 +19,7 @@ function clearGame (mainElement) {
 }
 
 function flipCard(event, gameData, eventHandler) {
+  // function to handle the case where neither card is a match
   function nonMatch() {
     gameData.firstCard.addEventListener("click", eventHandler);
     gameData.secondCard.addEventListener("click", eventHandler);
@@ -132,7 +133,6 @@ export function setGame(event, mainElement) {
   });
   
   const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-  // const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
   
   if (vw <= 600)
     gameData.numOfTiles = 16;

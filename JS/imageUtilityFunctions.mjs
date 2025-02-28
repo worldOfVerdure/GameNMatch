@@ -49,12 +49,14 @@ export function addImage(imageArray, index, chosenOptgroup, chosenOption) {
   imgEle.src = `./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}.webp`;
   imgEle.alt = `A picture of a ${imageArray[index]}`;
   imgEle.title = `${imageArray[index]}`;
+  // Could have served (larger? Higher res, greater css pixel width) images for higher pixel density devices.
   imgEle.srcset = `
     ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-sm.webp 100w,
     ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-md.webp 130w,
     ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-lg.webp 190w,
     ./images/${lowerCaseOptGroup}/${lowerCaseOption}/${imageArray[index]}-xlg.webp 250w
   `;
+  // If the viewport doesn't exceed 600, 900, 1200px, use the specified image sizes, else, use 250px.
   imgEle.sizes = `
     (max-width: 600px) 100px,
     (max-width: 900px) 130px,

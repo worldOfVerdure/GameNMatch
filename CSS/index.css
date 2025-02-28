@@ -13,17 +13,11 @@
     Arial, sans-serif;
 }
 
-html {
-  font-size: 62.5%;
-}
-
 body {
+  box-sizing: border-box;
   font-size: 1.6rem;
   margin: 0;
-  box-sizing: border-box;
   min-height: 100vh;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
 }
 
 body.faunaGradient {
@@ -38,140 +32,32 @@ body.fungiGradient {
   background: conic-gradient(at 50% -1%, #35858B, #072227, #AEFEFF);
 }
 
-header {
-  max-height: 10%;
-}
-
-select {
-  font-size: 2.75rem;
-  font-family: "Playfair Display", serif;
-  padding: .45rem;
-  margin: 1% 0 1.5rem 1%;
-}
-
-#optionHeader {
-  font-size: 2.5rem;
-}
-
-option {
-  font-size: 2.25rem;
-}
-
-optgroup {
-  font-size: 2.30rem;
-  font-weight: bold;
-}
-
-div[id="statsContainer"] {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: stretch;
-  margin: 0.7rem;
-}
-
-div.infoBlock, div.timerBlock {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-div.infoBlock {
-  flex: 1 2 20%;
-}
-
-div.timerBlock {
-  flex: 1 1 15%;
-}
-
-div > p {
-  width: fit-content;
-  font-size: 3.3rem;
-  font-family: system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell;
-  margin: 0 0 1rem 0;
-}
-
-p.faunaColor {
-  color: #F8FAE5;
-}
-
-p.floraColor {
-  color: #F8FF95;
-}
-
-p.fungiColor {
-  color: #78e6e2;
-}
-
-div.statsDisplay, button {
-  font-size: 3.2rem;
-}
-
-div.statsDisplay {
-  flex: 1 1 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 0 .3rem;
-  font-family: var(--monospace-font-stack);
-  text-align: center;
-  font-size: 3.5rem;
+button:hover {
+  background-color: #fff;
+  cursor: pointer;
 }
 
 button[id="resetBtn"] {
-  max-width: 37.5%;
-  display: flex;
-  justify-content: center;
   align-items: center;
   border-radius: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
-button:hover {
-  cursor: pointer;
-  background-color: #fff;
-}
-
-main {
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  grid-gap: 1rem;
-  font-size: 3rem;
-  width: 87%;
-  height: 70vh;
-  margin: 1.5rem auto; 
-}
-
-div.scene {
-  max-width: 250px;
-  width: 100%;
-  height: 100%;
-  perspective: 1250px;
-  border: .5rem dashed #000;
-}
-
-div.card {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform .5s;
-}
-
-.isRotated {
-  transform: rotateY(-180deg);
-}
-
-div.back, div.front {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  backface-visibility: hidden;
+button, div.statsDisplay {
+  font-size: 3.2rem;
 }
 
 div.back {
   background: url("../images/cards/cardBack.svg") center/contain no-repeat;
+}
+
+div.back, div.front {
+  backface-visibility: hidden;
+  height: 100%;
+  /* Position front and back out of the normal flow, where they are superimposed on the other. */
+  position: absolute; 
+  width: 100%;
 }
 
 div.backFauna {
@@ -186,44 +72,156 @@ div.backFungi {
   background-color: #359475 ;
 }
 
+div.card {
+  height: 100%;
+  position: relative;
+  transition: transform .8s;
+  transform-style: preserve-3d;
+  width: 100%;
+}
+
 div.front {
-  background-color: yellowgreen;
   transform: rotateY(180deg);
 }
 
-img.match-image {
-  width: 100%;
+div[id="statsContainer"] {
+  display: flex;
+  margin: 0.7rem;
+  justify-content: space-evenly;
+}
+/* !What is info block? */
+div.infoBlock {
+  flex: 1 2 20%;
+}
+
+div.infoBlock, div.timerBlock {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div > p {
+  font-family: system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell;
+  font-size: 3.3rem;
+  margin: 0 0 1rem 0;
+  width: fit-content;
+}
+
+div.scene {
+  border: .5rem dashed #000;
   height: 100%;
+  max-width: 250px;
+  perspective: 1250px;
+  width: 100%;
+}
+
+div.statsDisplay {
+  align-items: center;
+  display: flex;
+  flex: 1 1 20%;
+  font-family: var(--monospace-font-stack);
+  font-size: 3.5rem;
+  justify-content: center;
+  padding: 0 .3rem;
+  text-align: center;
+  width: 100%;
+}
+
+div.timerBlock {
+  flex: 1 1 15%;
+}
+
+header {
+  max-height: 10%;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+img.match-image {
+  height: 100%;
+  width: 100%;
+}
+
+.isRotated {
+  transform: rotateY(-180deg);
+}
+
+main {
+  align-items: center;
+  display: grid;
+  font-size: 3rem;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-gap: 1rem;
+  height: 70vh;
+  justify-items: center;
+  margin: 1.5rem auto; 
+  width: 87%;
+}
+
+p.faunaColor {
+  color: #F8FAE5;
+}
+
+p.floraColor {
+  color: #F8FF95;
+}
+
+p.fungiColor {
+  color: #78e6e2;
+}
+
+optgroup {
+  font-size: 2.30rem;
+  font-weight: bold;
+}
+
+option {
+  font-size: 2.25rem;
+}
+
+#optionHeader {
+  font-size: 2.5rem;
+}
+
+select {
+  font-family: "Playfair Display", serif;
+  font-size: 2.75rem;
+  margin: 1% 0 1.5rem 1%;
+  padding: .45rem;
 }
 
 @media screen and (min-width: 200px) and (max-width: 1000px) and (orientation: portrait) {
-  select {
-    max-width: 90%;
-    font-size: calc(2.2rem + 8 * ((100vw - 20rem) / 800)); /*range: 22-30*/
-  }
-
-  #optionHeader {
-    font-size: calc(1.5rem + 8 * ((100vw - 20rem) / 800)); /*range: 15-23*/;
-  }
-
-  optgroup {
-    font-size: calc(1.4rem + 8 * ((100vw - 20rem) / 800)); /*range: 14-22*/;
-  }
-
-  option, header > div {
-    font-size: calc(1.3rem + 8 * ((100vw - 20rem) / 800)); /*range: 13-21*/;
-  }
-
-  div.statsDisplay {
-    font-size: calc(2.5rem + 8 * ((100vw - 20rem) / 800)); /*range: 25-33*/
-  }
-
   div[id="timerDisplay"] {
     font-size: calc(2.4rem + 9 * ((100vw - 20rem) / 800)); /*range: 24-33*/
   }
 
   div > p {
     font-size: calc(2rem + 12 * ((100vw - 20rem) / 800)); /*range: 20-32*/
+  }
+
+  div.statsDisplay {
+    font-size: calc(2.5rem + 8 * ((100vw - 20rem) / 800)); /*range: 25-33*/
+  }
+
+  header > div, option {
+    font-size: calc(1.3rem + 8 * ((100vw - 20rem) / 800)); /*range: 13-21*/;
+  }
+
+  optgroup {
+    font-size: calc(1.4rem + 8 * ((100vw - 20rem) / 800)); /*range: 14-22*/;
+  }
+
+  #optionHeader {
+    font-size: calc(1.5rem + 8 * ((100vw - 20rem) / 800)); /*range: 15-23*/;
+  }
+
+  select {
+    max-width: 90%;
+    font-size: calc(2.2rem + 8 * ((100vw - 20rem) / 800)); /*range: 22-30*/
   }
 }
 
